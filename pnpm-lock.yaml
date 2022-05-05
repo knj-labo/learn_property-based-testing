@@ -2,12 +2,14 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/jest': 27.5.0
+  fast-check: 2.25.0
   jest: 28.0.3
   ts-jest: 28.0.1
   typescript: 4.6.4
 
 devDependencies:
   '@types/jest': 27.5.0
+  fast-check: 2.25.0
   jest: 28.0.3
   ts-jest: 28.0.1_4db907953e67367985ae85b48dfb7df7
   typescript: 4.6.4
@@ -1067,6 +1069,13 @@ packages:
       jest-util: 28.0.2
     dev: true
 
+  /fast-check/2.25.0:
+    resolution: {integrity: sha512-wRUT2KD2lAmT75WNIJIHECawoUUMHM0I5jrlLXGtGeqmPL8jl/EldUDjY1VCp6fDY8yflyfUeIOsOBrIbIiArg==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      pure-rand: 5.0.1
+    dev: true
+
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
     dev: true
@@ -1982,6 +1991,10 @@ packages:
     dependencies:
       kleur: 3.0.3
       sisteransi: 1.0.5
+    dev: true
+
+  /pure-rand/5.0.1:
+    resolution: {integrity: sha512-ksWccjmXOHU2gJBnH0cK1lSYdvSZ0zLoCMSz/nTGh6hDvCSgcRxDyIcOBD6KNxFz3xhMPm/T267Tbe2JRymKEQ==}
     dev: true
 
   /react-is/17.0.2:
