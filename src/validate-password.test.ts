@@ -23,3 +23,27 @@ describe('パスワードは必ず8文字以上で20文字以下でならなけ�
         )
     })
 })
+
+describe('パスワードは必ずアルファベット、数字や記号を含まなければならない場合', () => {
+    test('数字のみしか含まれていない場合は、falseを返す', () => {
+        fc.assert(
+            fc.property(fc.char(),(password:string) => {
+                 console.log(password);
+            })
+        );
+    });
+    test('アルファベットのみしか含まれていない場合は、falseを返す', () => {
+        fc.assert(
+            fc.property(fc.char(),(password:string) => {
+                 console.log(password);
+            })
+        );
+    });
+    test('記号のみしか含まれていない場合は、falseを返す', () => {
+        fc.assert(
+            fc.property(fc.char(),(password:string) => {
+               console.log(password);
+            })
+        );
+    });
+});
