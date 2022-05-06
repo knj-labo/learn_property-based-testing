@@ -1,11 +1,13 @@
 import fc from 'fast-check';
 import { validatePassword } from "./validate-password";
 
-const char = (charCodeFrom:number,charCodeTo: number) => fc.integer(charCodeFrom, charCodeTo).map(String.fromCharCode);
+const char = (charCodeFrom:number,charCodeTo: number) => fc.integer().map(String.fromCharCode);
+
 const filteredStrings = (min: number,max: number,filter:RegExp) => {
-    return fc.array(char(33, //'!'
+    return fc.array(
+        char(33, //'!'
         126 //'~'
-    ).filter(c => filter.test(c)),min,max).map(arr => arr.join(''));
+    ).filter(c => filter.test(c)),{minLength: min, maxLength: max}).map(arr => arr.join(''));
 }
 const filteredNumber = (min:number,max:number) => filteredStrings(8,20,/^[0-9]$/);
 const filteredAlphabet = (min:number,max:number) => filteredStrings(8,20,/^[a-zA-Z]$/);
@@ -20,14 +22,14 @@ describe('パスワードは必須項目な場合', ()  => {
 describe('パスワードは必ず8文字以上で20文字以下でならなければならない場合', () => {
     it('パスワードの値が8文字未満の場合は、falseを返す', () => {
         fc.assert(
-            fc.property(fc.string(0, 7),(password: string) => {
+            fc.property(fc.string({minLength: 0, maxLength: 7}),(password: string) => {
               expect(validatePassword(password)).toBe(false)
             })
         )
     })
     it('パスワードの値が21文字以上の場合は、falseを返す', () => {
         fc.assert(
-            fc.property(fc.string(21,100),(password:string) => {
+            fc.property(fc.string({minLength: 21, maxLength: 100}),(password:string) => {
                 expect(validatePassword(password)).toBe(false)
             })
         )
